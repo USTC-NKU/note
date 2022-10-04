@@ -1,5 +1,3 @@
 # note
 
-ggh
-hhjk
-
+笔记仓库
