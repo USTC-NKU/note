@@ -24,6 +24,8 @@ Theme: Haru
 4. orthogonal:正交的
 5. Hermitian:厄米，埃尔米特
 6. eigenfunction:本征函数
+7. Commutation:对易
+8. Harmonic oscillator:谐振子
 
 > Abbreviation explanation
 
@@ -361,11 +363,269 @@ Theme: Haru
       \lang \hat{F}\rang=\int f^{*}(x)\hat{F}f(x)\mathrm{dx}
       $$
 
+### Static schrödinger equation
+
+1. 定态薛定谔方程
+   $$
+   \hat{H}\psi(\vec{r})=E\psi(\vec{r})\\
+   \hat{H}|\psi\rang=E|\psi\rang
+   $$
+   不含时间的哈密顿算符的本征方程，即==能量本征方程==，$\psi(\vec{r})$是本征函数或本征态，$E$是本征值，即能量
+
+2. 定态问题求解步骤
+
+   1. 列出定态方程
+   2. 基于单值、有限、连续条件给出本征值问题
+   3. 解出本征值及其对应本征函数，确定归一化系数
+   4. 给出完整含时波函数
+
+3. 性质
+
+   1. 概率密度不随时间演化
+   2. 本征解归一化
+   3. 平均值不随时间演化，满足守恒定律
+
+### Linear Hamonic oscillator
+
+1. 线性谐振子在平衡点附近的势能形式为
+   $$
+   U(x)=U(x_{0})+\frac{k}{2}(x-x_{0})^2,\quad k=\mu\omega_{0}^2,固有频率
+   $$
+
+2. 线性谐振子势能定态薛定谔方程
+
+   1. 线性谐振子能级
+      $$
+      E_{n}=(n+\frac{1}{2})\hbar\omega,n\in N
+      $$
+      $n=0$时的能量称为零点能
+
 ### Appendix
 
 [附录二](#Appendix_2)
 
 ---
+
+## Barrier and Potential Well
+
+### Potential Well
+
+1. 一维对称无限深势阱
+   $$
+   \begin{aligned}
+   &-\frac{\hbar^2}{2m}\frac{\mathrm{d^2}}{\mathrm{dx^2}}\psi=E\psi\\
+   &k^2=\frac{2mE}{\hbar^2}\\
+   &\psi=A\cos(kx)+B\sin(kx)\\
+   \Leftrightarrow&\psi=C\exp(ikx)+C\prime\exp(-ikx)\\
+   \Leftrightarrow&\psi=D\sin(kx+\delta)
+   \end{aligned}
+   $$
+
+   > 上面三种解的形式是等价的，但在处理不同问题时难易程度不一样
+   >
+   > 解形式一对于势阱问题直观好理解
+   >
+   > 解形式二多用于势垒问题
+   >
+   > 解形式三在利用一些边界条件时方便
+
+   $$
+   \begin{aligned}
+   &\psi(-a)=A\cos(-ka)+B\sin(-ka)=0\\
+   &\psi(a)=A\cos(ka)+B\sin(ka)=0\\
+   \Rightarrow&
+   \begin{vmatrix}
+   \cos(-ka)&\sin(-ka)\\
+   \cos(ka)&\sin(ka)
+   \end{vmatrix}=0\\
+   \Rightarrow&\sin(2ka)=0\\
+   \Rightarrow&k=\frac{n\pi}{2a}\\
+   \Rightarrow&E_{n}=\frac{n^2\pi^2\hbar^2}{2m(2a)^2}\\
+   \Rightarrow&\psi=D\sin\frac{n\pi}{2a}(x+a)\\
+   &normalization\\
+   \Rightarrow&D=\frac{1}{\sqrt{a}}\\
+   \Rightarrow&\psi=\frac{1}{\sqrt{a}}\sin\frac{n\pi}{2a}(x+a),x\in(-a,a),n\in N^{+}
+   \end{aligned}
+   $$
+
+   从结果看到，n为偶数时为奇函数，波函数具有奇宇称；n为奇数时为偶函数，波函数具有偶宇称
+
+   空间波函数$\psi_{n}(x)$具有$(n-1)$个节点(零点)，其对应的概率密度具有$n$个极大值
+
+2. 高维无限深势阱
+
+   对于高维势阱，进一步分离空间函数，按照类似的方法去推导，就能发现最终的波函数形式是各个正交坐标基矢上波函数的直乘形式
+   $$
+   \psi(x,y)=\sqrt\frac{2}{l_{x}}\sqrt{\frac{2}{l_{y}}}\sin\frac{n_{x}\pi x}{l_{x}}\sin{\frac{n_{y}\pi y}{l_{y}}}\\
+   E_{i}=\frac{n_{i}^2\pi^2\hbar^2}{2ml_{i}^2}
+   $$
+   
+   $$
+   \psi(x,y,z)=\sqrt\frac{8}{l_{x}l_{y}l_{z}}\sin\frac{n_{x}\pi x}{l_{x}}\sin\frac{n_{y}\pi y}{l_{y}}\sin\frac{n_{z}\pi z}{l_{z}}\\
+   E_{i}=\frac{n_{i}^2\pi^2\hbar^2}{2ml_{i}^2}
+   $$
+   当各个方向上的势阱长度相等时，就会出现能级简并，能量本征值为
+   $$
+   E=\frac{\pi^2\hbar^2}{2ma^2}\sum n_{i}^2
+   $$
+   能级的简并度取决于
+   $$
+   \sum n_{i}^2=\frac{2ma^2E}{\pi^2\hbar^2}
+   $$
+   的整数解$(n_{1},n_{2},\cdots)$的个数
+
+3. 态密度
+
+   态密度就是单位能量范围内的状态数
+
+   本节式子中：势阱全为无限深，$N$为势阱中占据的量子态总数，能量为E，各方向上势阱宽度为L，质量为m
+   $$
+   \rho(E)=\frac{\mathrm{dN}}{\mathrm{dE}}
+   $$
+   
+
+   1. 一维势阱
+
+      一维势阱中，设一个粒子占据一个本征态，一维中，量子态总数与本征态总数相等，即$N=n$
+      $$
+      \begin{aligned}
+      &E=\frac{n^2\pi^2\hbar^2}{2mL^2}=\frac{N^2\pi^2\hbar^2}{2mL^2}\\
+      &\mathrm{dE}=\frac{N\pi^2\hbar^2}{mL^2}\mathrm{dN}\\
+      &\rho(E)=\frac{L}{2\pi\hbar}\sqrt{\frac{2m}{E}}
+      \end{aligned}
+      $$
+
+   2. 二维势阱
+
+      设一个粒子占据一个本征态，二维中，一个量子态由坐标$(n_{1},n_{2})$表征，坐标系中每一个点表征一个量子态。空间中总量子态数就是以$\sqrt{n_{1}^2+n_{2}^2}$为半径的四分之一圆的面积，这是因为$n_{i}$全是正整数。
+      $$
+      \begin{aligned}
+      &N=\frac{1}{4}\pi(n_{1}^2+n_{2}^2)\\
+      &E=\frac{\pi^2\hbar^2}{2mL^2}(n_{1}^2+n_{2}^2)\\
+      &\rho(E)=\frac{L^2m}{2\pi\hbar^2}
+      \end{aligned}
+      $$
+      可见，二维无限深势阱中态密度与能量本征值无关
+
+   3. 三维势阱——==金属自由电子气模型==
+
+      同样地，三维中，一个量子态由坐标$(n_{1},n_{2},n_{3})$表征，空间中总量子态数是以$\sqrt{n_{1}^2+n_{2}^2+n_{3}^2}$为半径的八分之一球空间的点数目，即体积大小。
+      $$
+      \begin{aligned}
+      &N=\frac{1}{8}\frac{4\pi}{3}(n_{1}^2+n_{2}^2+n_{3}^2)^{\frac{3}{2}}\\
+      &E=\frac{\pi^2\hbar^2}{2mL^2}(n_{1}^2+n_{2}^2+n_{3}^2)\\
+      &\rho(E)=\frac{L^3}{4\pi^2\hbar^3}(2m)^{\frac{3}{2}}\sqrt{E}
+      \end{aligned}
+      $$
+
+4. 费米面与费米能级
+
+   > 联动半导体物理学习
+
+   令三维无限深势阱中体系的本征能量方程为
+   $$
+   E=\frac{\hbar^2}{2m}(\frac{n_{1}^2\pi^2}{L_{x}^2}+\frac{n_{2}^2\pi^2}{L_{y}^2}+\frac{n_{3}^2\pi^2}{L_{z}^2})=\frac{\hbar^2k^2}{2m}
+   $$
+
+   $$
+   \vec{k}\equiv\{k_{x},k_{y},k_{z}\}=\{\frac{n_{1}\pi}{L_{x}},\frac{n_{2}\pi}{L_{y}},\frac{n_{3}\pi}{L_{z}}\}
+   $$
+
+   这是固体中电子波矢量的允许值，对应三维k空间的第一卦限
+
+   1. 费米面
+
+      在三维k空间中，每个电子态占据的体积为$\frac{\pi^3}{L_{x}L_{y}L_{z}}=\frac{\pi^3}{V}$。假设固体包含$N$个原子，每个原子具有$q$个自由电子。一个电子有两种自选状态，因此每个状态占据的体积为$\frac{\pi^3}{2V}$，其倒数即为==态密度==
+
+      k空间中电子对应占据的八分之一球体半径为$k_{F}$，空间中所有$Nq$个电子状态占据的体积等于空间的体积
+      $$
+      \begin{aligned}
+      &Nq\frac{\pi^3}{2V}=\frac{\pi k_{F}^3}{6}\\
+      &\rho=\frac{Nq}{V},自由电子密度\\
+      &k_{F}=(3\rho\pi^2)^{\frac{1}{3}}
+      \end{aligned}
+      $$
+      ==k空间中电子态所占据的区域与未被占据部分的分界面称为费米面==，是一个八分之一球面，球半径为$k_{F}$，即费米半径
+
+   2. 费米能级
+
+      费米半径对应的能级称费米能级，对于自由电子气
+      $$
+      E_{F}=\frac{\hbar^2k_{F}^2}{2m}
+      $$
+
+   3. 体积为V的固体中全部电子的总能量
+
+      k空间中八分之一球壳的体积是
+      $$
+      \frac{1}{8}4\pi k^2\mathrm{dk}
+      $$
+      这一球壳中的电子态数目为
+      $$
+      \frac{1}{2}\pi k^2\mathrm{dk}*\frac{2V}{\pi^3}
+      $$
+      总能量为
+      $$
+      \frac{1}{2}\pi k^2\mathrm{dk}*\frac{2V}{\pi^3}*\frac{\hbar^2 k^2}{2m}
+      $$
+      积分结果
+      $$
+      E=\frac{\hbar^2 V k_{F}^5}{10\pi^2m}
+      $$
+
+### Barrier
+
+​	势垒贯穿是一维散射问题
+
+​	下面假定粒子从无限远处沿坐标轴正向射入势垒，势垒的势函数如下
+$$
+V(x)=\begin{Bmatrix}
+V_{0},x\in(0,a)\\
+0,else
+\end{Bmatrix}
+$$
+​	这一问题我们需要探索反射系数和透射系数。反射系数是反射粒子数与入射总粒子数之比，即反射流密度与入射流密度之比。根据概率流密度守恒，透射系数即用一减去反射系数即可
+
+​	由于势垒的存在，在$x\in(-\infty,0)$区域内，即存在入射粒子，也存在反射粒子；在$x\in(a,\infty)$区域内，只有透射粒子存在。波函数形式如下
+$$
+\psi(x)=\begin{Bmatrix}
+Ae^{ikx}+Re^{-ikx},x\in(-\infty,0)\\
+Se^{ikx},x\in(a,\infty)
+\end{Bmatrix}
+$$
+​	入射流粒子密度
+$$
+J_{in}=\frac{i\hbar}{2m}(\psi\nabla\psi^{*}-\psi^{*}\nabla\psi)=\frac{A^2\hbar k}{m}
+$$
+​	类似地有反射和投射粒子流密度，进一步得到投射和反射系数
+$$
+Re=R^2,Tr=S^2,(取A^2=1)
+$$
+​	在势垒内部的定态方程
+$$
+\frac{\mathrm{d^2}}{\mathrm{dx^2}}\psi-\frac{2m}{\hbar^2}(V_{0}-E)\psi=0
+$$
+​	边界条件由波函数及其一阶导数在$x=0$的连续性确定
+
+​	剩下的工作就与前面类似了
+
+​	结论就是即便在入射能量小于势垒的情况下，透射系数依然不为零，这一现象就是量子隧穿效应
+
+---
+
+## Harmonic osicllator
+
+​	只要振幅足够小，任何震动都可以近似为简谐振动。固体中的晶格振动、原子核的表面振动、分子与分子之间的相互作用势、核子与核子之间的相互作用势，这些势场在平衡点附近的展开准确到二阶后就是谐振子势
+
+​	在物理上，任何连续振动的体系，都可以等价地看成无限多个谐振子的集合，比如辐射场可以看成是无穷多个谐振子发出的简谐波的叠加
+
+### Algebraic analysis
+
+​	代数揭发指的是通过算符代数运算的方法求解量子谐振子的本征问题
+
+---
+
+
 
 ## Operators
 
@@ -390,6 +650,8 @@ Theme: Haru
    \int(\hat{F}\psi)^{*}\phi\mathrm{dx}=\int\psi^{*}\hat{F}^{\dagger}\phi\mathrm{dx}
    $$
    比较厄米算符的定义可以知道，==如果一个算符与它的厄米共轭相等，这该算符是厄米算符==，这也是厄米算符的另一种定义
+   
+3. 体系的哈密顿算符是厄米算符
 
 #### Properties of eigenfunction
 
@@ -411,7 +673,153 @@ Theme: Haru
    $$
    系数$c_{n}$与自变量无关。本征函数具有的这种性质称为完备性
 
+### Commutation relation
+
+​	**所谓对易，就是在运算过程中可以调换顺序**
+
+​	在经典力学中，所有力学量都用函数表示，他们之间都是对易的
+
+​	但在量子力学中，算符之间存在不对易性。量子力学算符对易关系定义如下：
+
+​	
+$$
+[\hat{A},\hat{B}]=\hat{A}\hat{B}-\hat{B}\hat{A}
+$$
+
+#### Commonly used commutation identity
+
+1. 对易式满足的代数恒等式
+   $$
+   \begin{aligned}
+   &[\hat{A},\hat{B}]=-[\hat{B},\hat{A}]\\
+   &[\hat{A},\hat{A}]=0\\
+   &[\hat{A},c]=0\\
+   &[\hat{A},\hat{B}+\hat{C}]=[\hat{A},\hat{B}]+[\hat{A},\hat{C}]\\
+   &[\hat{A},\hat{B}\hat{C}]=\hat{B}[\hat{A},\hat{C}]+[\hat{A},\hat{B}]\hat{C}\\
+   &[\hat{A}\hat{B},\hat{C}]=\hat{A}[\hat{B},\hat{C}]+[\hat{A},\hat{C}]\hat{B}\\
+   &[\hat{A},\hat{B}]^{\dagger}=[\hat{B}^{\dagger},\hat{A}^{\dagger}]\\
+   &[\hat{A},[\hat{B},\hat{C}]]+[\hat{B},[\hat{C},\hat{A}]]+[\hat{C},[\hat{A},\hat{B}]]=0
+   \end{aligned}
+   $$
+
+2. 设$\vec{A},\vec{B}$为矢量算符，$F$为标量算符
+   $$
+   \begin{aligned}
+   &[F,\vec{A}\cdot\vec{B}]=F\vec{A}\cdot\vec{B}-\vec{A}\cdot\vec{B}F\\
+   &[F,\vec{A}\times\vec{B}]=\vec{A}\times[F,\vec{B}]+[F,\vec{A}]\times\vec{B}
+   \end{aligned}
+   $$
+
+3. 设算符${A},{B}$和他们的对易式$[{A},{B}]$都对易，有
+   $$
+   \begin{aligned}
+   &[A,B^n]=nB^{n-1}[A,B]\\
+   &[A^n,B]=nA^{n-1}[A,B]
+   \end{aligned}
+   $$
+
+#### Commutation indentity
+
+1. 如果$[A,B]\neq 0$，$\lambda$是实数，则有
+   $$
+   e^{\lambda A}F(B)e^{-\lambda A}=F(e^{\lambda A}Be^{-\lambda A})
+   $$
+
+2. **Hadamard**公式
+
+   如果$[A,B]\neq 0$，则有
+   $$
+   e^{A}Be^{-A}=B+\frac{1}{1!}[A.B]+\frac{1}{2!}[A,[A,B]]+\frac{1}{3!}[A,[A,[A,B]]]+\cdots
+   $$
+   证明提示：参量微分法，构造$F(\lambda)=e^{A\lambda}Be^{-A\lambda}$，在零点泰勒展开比对即可
+
+3. **Baker-Campbell-Hausdriff**公式
+
+   在处理指数形式算符的过程中，BCH公式特别实用
+
+   如果算符$\hat{A},\hat{B}$满足$[\hat{A},\hat{B}]=\hat{C}$，并且算符$\hat{C}$和算符$\hat{A},\hat{B}$对易，则有：
+   $$
+   \exp(\hat{A}\alpha+\hat{B}\beta)=exp(\hat{B}\beta)\exp(\hat{A}\alpha)\exp(\frac{\beta\alpha}{2}\hat{C})
+   $$
+
+#### Basic commutation
+
+​	力学量都是坐标和动量的函数，利用位置和动量之间的对易关系可以得出其他力学量之间的对易关系，因此位置和动量的对易关系称为基本对易式
+$$
+[\hat{x_{\alpha}},\hat{p_{\beta}}]=i\hbar\delta_{\alpha\beta}
+$$
+其中$\hat{x_{\alpha}}(\alpha=1,2,3)\equiv(x,y,z),\hat{p_{\beta}}(\beta=1,2,3)\equiv(\hat{p_{x}},\hat{p_{y}},\hat{p_{z}})$
+
+​	对易关系本质是算符间作用于波函数的一种表达，所以在证明对易关系时要借助波函数$\psi$
+
+​	相关证明参见本节附录
+
+#### commutation linked with momentum and coordination
+
+​	以下公式族中$\vec{r}$表示位置算符，$F(\vec{r},\vec{\hat{p}})$为标量算符，$V(r)$为标势
+$$
+\begin{aligned}
+&{[p_{x},f(x)]}=-i\hbar\frac{\partial}{\partial x}f(x)\\
+&[\vec{p},F]=-i\hbar\nabla F\\
+&[\vec{p},V(r)]=-i\hbar\nabla V(r)\\
+&[\vec{p},\frac{1}{r}]=i\hbar\frac{\vec{r}}{r^3}\\
+&[p^2,\frac{1}{r}]=2\hbar^2\frac{1}{r^2}\frac{\partial}{\partial r}\\
+&[p^2,r^2]=-\hbar^2(6+4r\frac{\partial }{\partial r})\\
+&[\vec{r},F]=i\hbar\frac{\partial}{\partial\vec{p}}F\\
+&[\vec{r},p^2]=2i\hbar\vec{p}\\
+&[\vec{r}\cdot\vec{p},p^2]=2i\hbar p^2\\
+&[\vec{r}\cdot\vec{p},V(r)]=-i\hbar\vec{r}\cdot(\nabla V(r))
+\end{aligned}
+$$
+​	部分相关证明参见本节附录
+
+#### Physical meaning of commutative operators
+
+1. ==定理==
+
+   如果两个算符有一组共同的本征矢$|n\rang$，并且它们构成完备集，则这两个算符对易
+
+2. 逆定理
+
+   如果两个算符对易，则他们有共同的本征矢
+
+3. 推广定理
+
+   如果一组算符有共同的本征矢，且它们构成完备集，则这一组算符中任意两个算符对易，并且该定理的逆定理也成立
+
+### Appednix
+
+[附录三](#Appendix_3)
+
 ---
+
+## Conserved quantity
+
+### Ehrenfest principal
+
+1. ==埃伦费斯特定理==
+
+   埃伦费斯特定理时描述力学量的平均值随时间的演化关系
+
+   >  注意这里描述的是力学量的平均值对时间的演化，而不是力学量随时间变化的平均值
+
+   $$
+   \frac{\mathrm{d}}{\mathrm{dt}}\lang A\rang=\frac{1}{i\hbar}[A,H]+\lang\frac{\partial A}{\partial t}\rang
+   $$
+
+2. ==海森堡运动方程==
+
+   当力学量不随时间演化，埃伦费斯特定理就转化为海森堡运动方程
+   $$
+   \frac{\mathrm{d}}{\mathrm{dt}}\lang A\rang=\frac{1}{i\hbar}[A,H]
+   $$
+   
+
+
+
+---
+
+
 
 ## Dirac notation
 
@@ -691,4 +1099,56 @@ $$
    $$
    \int\psi_{k}^{*}\psi_{l}\mathrm{d\tau}=0
    $$
+
+## 附录三
+
+<a id="Appendix_3">附录三锚点</a>
+
+1. 动量与位置坐标对易关系证明
+
+   1. $[x,\hat{p}_{x}]=i\hbar$
+      $$
+      \begin{aligned}
+      {[x,\hat{p_{x}}]}\psi&=x\hat{p_{x}}\psi-\hat{p_{x}}x\psi\\
+      &=-xi\hbar\frac{\partial}{\partial x}\psi+i\hbar\frac{\partial}{\partial x}(x\psi)\\
+      &=i\hbar\psi
+      \end{aligned}
+      $$
+
+   2. $[x,\hat{p_{y}}]=0$
+      $$
+      \begin{aligned}
+      {[x,\hat{p_{y}}]}\psi&=x\hat{p_{y}}\psi-\hat{p_{y}}x\psi\\
+      &=-xi\hbar\frac{\partial}{\partial y}\psi+i\hbar\frac{\partial}{\partial y}(x\psi)\\
+      &=0
+      \end{aligned}
+      $$
+
+2. 与位置、动量有关的算符对易关系
+   $$
+   \begin{aligned}
+   {[\vec{p},F]}&=[\hat{p_{x}}\vec{i}+\hat{p_{y}}\vec{j}+\hat{p_{z}}\vec{k},F]\\
+   &=-i\hbar\frac{\partial}{\partial x}F\vec{i}-i\hbar\frac{\partial}{\partial y}F\vec{j}-i\hbar\frac{\partial}{\partial z}F\vec{k}\\
+   &=-i\hbar\nabla F
+   \end{aligned}
+   $$
+
+   $$
+   [\vec{p},\frac{1}{r}]=-i\hbar\nabla\frac{1}{r}=i\hbar\frac{\vec{r}}{r^3}
+   $$
+
+   $$
+   \begin{aligned}
+   {[\vec{r},p^2]}&=[\vec{r},p_{x}^2]+[\vec{r},p_{y}^2]+[\vec{r},p_{z}^2]\\
+   &=[x,p_{x}^2]\vec{i}+[y,p_{y}^2]\vec{j}+[z,p_{z}^2]\vec{k}\\
+   &=[p_{x}[x,p_{x}]+[x,p_{x}]p_{x}]\vec{i}+[p_{y}[y.p_{y}]+[y,p_{y}]p_{y}]\vec{j}+[p_{z}[z.p_{z}]+[z,p_{z}]p_{z}]\vec{k}\\
+   &=2i\hbar\vec{p}
+   
+   \end{aligned}
+   $$
+
+   $$
+   [\vec{r}\cdot\vec{p},p^2]=\vec{r}[\vec{p},p^2]+[\vec{r},p^2]\vec{p}=[\vec{r},p^2]\vec{p}=2i\hbar\vec{p}\cdot\vec{p}=2i\hbar p^2
+   $$
+
    
