@@ -26,6 +26,7 @@ Theme: Haru
 6. eigenfunction:本征函数
 7. Commutation:对易
 8. Harmonic oscillator:谐振子
+9. virial theorem:位力定理
 
 > Abbreviation explanation
 
@@ -787,7 +788,7 @@ $$
 
    如果一组算符有共同的本征矢，且它们构成完备集，则这一组算符中任意两个算符对易，并且该定理的逆定理也成立
 
-### Appednix
+### Appendix
 
 [附录三](#Appendix_3)
 
@@ -807,6 +808,8 @@ $$
    \frac{\mathrm{d}}{\mathrm{dt}}\lang A\rang=\frac{1}{i\hbar}[A,H]+\lang\frac{\partial A}{\partial t}\rang
    $$
 
+   数学证明参见附录
+
 2. ==海森堡运动方程==
 
    当力学量不随时间演化，埃伦费斯特定理就转化为海森堡运动方程
@@ -814,8 +817,59 @@ $$
    \frac{\mathrm{d}}{\mathrm{dt}}\lang A\rang=\frac{1}{i\hbar}[A,H]
    $$
    
+3. 位置、动量和力的平均值关系
+   $$
+   \frac{\mathrm{d}}{\mathrm{dt}}\lang x\rang=\frac{1}{i\hbar}\lang[x,H]\rang=-\frac{1}{i\hbar}\lang[H,x]\rang\\
+   =\frac{i}{\hbar}\lang[H,x]\rang=\frac{i}{2m\hbar}\lang[p_{x}^2+p_{y}^2+p_{z}^2,x]\rang\\
+   =\frac{i}{2m\hbar}\lang[p_{x}^2,x]\rang=\frac{i}{2m\hbar}\lang p_{x}[p_{x},x]\rang+\frac{i}{2m\hbar}\lang[p_{x},x]p_{x}\rang\\
+   =\frac{1}{m}\lang p_{x}\rang
+   $$
 
+   $$
+   \frac{\mathrm{d}}{\mathrm{dt}}\lang\vec{r}\rang=\frac{1}{m}\lang\vec{p}\rang
+   $$
 
+   $$
+   \frac{\mathrm{d}}{\mathrm{dt}}\lang p_{x}\rang=\lang-\frac{\partial V}{\partial x}\rang
+   $$
+
+   $$
+   \frac{\mathrm{d}}{\mathrm{dt}}\lang \vec{p}\rang=\lang-\nabla V\rang
+   $$
+
+   这些结果与经典力学的牛顿定律形式是一致的
+
+### Virial theorem
+
+1. 位力定理描述当体系处于定态下与动能相关的平均值 
+   $$
+   2\lang T\rang=\lang\vec{r}\cdot(\nabla V)\rang
+   $$
+   数学证明见附录
+
+   特别的，如果势场$V(x,y,z)$是$x,y,z$的$n$次齐次函数，则有
+   $$
+   2\lang T\rang=n\lang V\rang
+   $$
+   这一关系称为==欧拉齐次定理==
+
+   1. 对于谐振子势，$n=2$
+   2. 对于库伦势，$n=1$
+   3. 对于$\delta$势，$n=-1$
+
+### Hellmann-Feynman theorem
+
+1. 借助赫尔曼-费曼定理可以得出关于力学量平均值的许多信息而不必借助波函数进行繁琐计算
+
+   设体系的哈密顿量中含有某个参数$\lambda$，$E_{n}$是体系哈密顿量的本征值，相应的本征函数已经归一化，则有
+   $$
+   \frac{\partial E_{n}}{\partial t}=\lang\psi_{n}|H|\psi_{n}\rang
+   $$
+   数学证明参见附录
+
+### Appendix
+
+[附录四](#Appendix_4)
 
 ---
 
@@ -1150,5 +1204,53 @@ $$
    $$
    [\vec{r}\cdot\vec{p},p^2]=\vec{r}[\vec{p},p^2]+[\vec{r},p^2]\vec{p}=[\vec{r},p^2]\vec{p}=2i\hbar\vec{p}\cdot\vec{p}=2i\hbar p^2
    $$
+
+
+## 附录四
+
+<a id="Appendix_4">附录四锚点</a>
+
+1. 埃伦费斯特定理的证明
+   $$
+   \frac{\mathrm{d}}{\mathrm{dt}}\lang A\rang=\frac{1}{i\hbar}[A,H]+\lang\frac{\partial A}{\partial t}\rang
+   $$
+
+   $$
+   \lang A\rang=\int\psi^{*}A\psi\mathrm{d\tau}
+   $$
+
+   $$
+   i\hbar\frac{\partial }{\partial t}\psi=\hat{H}\psi\\\\
+   -i\hbar\frac{\partial }{\partial t}\psi^{*}=\psi^{*}\hat{H}
+   $$
+
+   $$
+   \begin{aligned}
+   \frac{\mathrm{d}}{\mathrm{dt}}\lang A\rang&=\int\frac{\partial}{\partial t}(\psi^{*}A\psi)\mathrm{d\tau}\\\\
+   &=\int(\frac{\partial\psi^{*}}{\partial t}A\psi+\psi^{*}\frac{\partial A}{\partial t}\psi+\psi^{*}A\frac{\partial\psi}{\partial t})\mathrm{d\tau}\\\\
+   &=-\frac{1}{i\hbar}\int(\psi^{*}HA\psi-\psi^{*}AH\psi)\mathrm{d\tau}+\int \psi^{*}\frac{\partial A}{\partial t}\psi\mathrm{d\tau}\\\\
+   &=\frac{1}{i\hbar}\int\psi^{*}[A,H]\psi\mathrm{d\tau}+\lang \frac{\partial A}{\partial t}\rang\\\\
+   &=\frac{1}{i\hbar}\lang[A,H]\rang+\lang\frac{\partial A}{\partial t}\rang
+   \end{aligned}
+   $$
+
+2. 位力定理证明
+
+   利用埃伦费斯特定理证明如下
+   $$
+   \begin{aligned}
+   \frac{\mathrm{d}}{\mathrm{dt}}\lang\vec{r}\cdot\vec{p}\rang&=\frac{1}{i\hbar}\lang[\vec{r}\cdot\vec{p},H]\rang\\\\
+   [\vec{r}\cdot\vec{p},\frac{p^2}{2m}+V]&=[\vec{r}\cdot\vec{p},\frac{p^2}{2m}]+[\vec{r}\cdot\vec{p},V]\\\\
+   &=\frac{1}{2m}[\vec{r},p^2]\cdot\vec{p}+[\vec{r}\cdot\vec{p},V]\\\\
+   &=\frac{1}{2m}2i\hbar p^2-i\hbar\vec{r}\cdot\nabla V\\\\
+   \Rightarrow\frac{\mathrm{d}}{\mathrm{dt}}\lang\vec{r}\cdot\vec{p}\rang&=\frac{1}{m}\lang p^2\rang-\lang\vec{r}\cdot\nabla V\rang
+   \end{aligned}
+   $$
+   定态条件下$\frac{\mathrm{d}}{\mathrm{dt}}\lang\vec{r}\cdot\vec{p}\rang=0$，因此
+   $$
+   \frac{1}{m}\lang p^2\rang=\lang\vec{r}\cdot\nabla V\rang\Leftrightarrow2\lang T\rang=\lang\vec{r}\cdot\nabla V\rang
+   $$
+
+3. 赫尔曼-费曼定理证明
 
    
